@@ -4,6 +4,7 @@ import "../globals.css";
 import NavbarPage from "@/layouts/NavbarPage";
 import MobileNavbarPage from "@/layouts/MobileNavbarPage";
 import Footer from "@/layouts/Footer";
+import { CartProvider } from "@/context/CartContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,16 +31,20 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <CartProvider>
         <header>
           <NavbarPage />
           <MobileNavbarPage />
         </header>
-        <main className="lg:mt-21 mt-15">
-          {children}
+        <main className="lg:mt-21 mt-15 lg:min-h-screen">
+          
+            {children}
+          
         </main>
         <footer>
           <Footer />
         </footer>
+        </CartProvider>
       </body>
     </html>
   );
